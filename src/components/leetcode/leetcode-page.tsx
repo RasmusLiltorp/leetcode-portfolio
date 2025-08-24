@@ -1,6 +1,6 @@
 import ProblemHeader from './problem-header'
+import ApproachSection from './approach-section'
 import SolutionCard from './solution-card'
-import ComplexityAnalysis from './complexity-analysis'
 import BackButton from './back-button'
 
 interface Solution {
@@ -12,9 +12,8 @@ interface Problem {
   title: string
   difficulty: string
   description: string
+  approach: string
   solutions: Solution[]
-  timeComplexity: string
-  spaceComplexity: string
 }
 
 interface LeetcodePageProps {
@@ -23,23 +22,21 @@ interface LeetcodePageProps {
 
 export default function LeetcodePage({ problem }: LeetcodePageProps) {
   return (
-    <div className="min-h-screen bg-base-100 p-8">
-      <div className="max-w-4xl mx-auto">
-        <ProblemHeader 
-          title={problem.title}
-          difficulty={problem.difficulty}
-          description={problem.description}
-        />
-        
-        <SolutionCard solutions={problem.solutions} />
-        
-        <ComplexityAnalysis 
-          timeComplexity={problem.timeComplexity}
-          spaceComplexity={problem.spaceComplexity}
-        />
-        
-        <BackButton />
+    <>
+      <BackButton />
+      <div className="min-h-screen bg-base-100 p-8">
+        <div className="max-w-4xl mx-auto">
+          <ProblemHeader 
+            title={problem.title}
+            difficulty={problem.difficulty}
+            description={problem.description}
+          />
+          
+          <ApproachSection approach={problem.approach} />
+          
+          <SolutionCard solutions={problem.solutions} />
+        </div>
       </div>
-    </div>
+    </>
   )
 }
