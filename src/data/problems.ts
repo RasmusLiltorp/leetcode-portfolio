@@ -113,6 +113,45 @@ public class Solution {
         return stack.Count == 0;
     }
 }`
+      },
+    ]
+  },
+  'merge-two-sorted-lists': {
+    title: 'Merge Two Sorted Lists',
+    difficulty: 'Easy',
+    description: 'You are given the heads of two sorted linked lists list1 and list2. Merge the two lists into one sorted list. The list should be made by splicing together the nodes of the first two lists.',
+    approach: 'Jeg bruger en dummy node til at starte den nye liste og en current pointer til at bygge listen op. Jeg sammenligner de to liste-hoveder og tilføjer den mindste node til den nye liste. Når en liste er tom, tilføjer jeg resten af den anden liste.',
+    solutions: [
+      {
+        language: 'C#',
+        code: `
+public class Solution {
+    public ListNode MergeTwoLists(ListNode list1, ListNode list2) 
+    {
+        ListNode dummy = new ListNode();
+        ListNode current = dummy;
+        
+        while (list1 != null && list2 != null)
+        {
+            if (list1.val < list2.val)
+            {
+                current.next = list1;
+                list1 = list1.next;
+            }
+            else
+            {
+                current.next = list2;
+                list2 = list2.next;
+            }
+            
+            current = current.next;
+        }
+        
+        current.next = list1 ?? list2;
+
+        return dummy.next;
+    }
+}`
       }
     ]
   }

@@ -1,7 +1,17 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { problems } from '@/data/problems'
 
 export default function Home() {
+  const getDifficultyBadgeClass = (difficulty: string) => {
+    switch (difficulty.toLowerCase()) {
+      case 'easy': return 'badge-success'
+      case 'medium': return 'badge-warning'
+      case 'hard': return 'badge-error'
+      default: return 'badge-neutral'
+    }
+  }
+
   return (
       <>
           <div className="hero min-h-screen relative">
@@ -21,13 +31,27 @@ export default function Home() {
                           <h2 className="menu-title">Løste opgaver</h2>
                           <ul>
                               <li>
-                                <Link href="/problems/two-sum">
-                                  Two Sum
+                                <Link href="/problems/two-sum" className="flex justify-between items-center">
+                                  <span>Two Sum</span>
+                                  <span className={`badge ${getDifficultyBadgeClass(problems['two-sum'].difficulty)} badge-sm`}>
+                                    {problems['two-sum'].difficulty}
+                                  </span>
                                 </Link>
                               </li>
                               <li>
-                                <Link href="/problems/valid-parentheses">
-                                  Valid Parentheses
+                                <Link href="/problems/valid-parentheses" className="flex justify-between items-center">
+                                  <span>Valid Parentheses</span>
+                                  <span className={`badge ${getDifficultyBadgeClass(problems['valid-parentheses'].difficulty)} badge-sm`}>
+                                    {problems['valid-parentheses'].difficulty}
+                                  </span>
+                                </Link>
+                              </li>
+                              <li>
+                                <Link href="/problems/merge-two-sorted-lists" className="flex justify-between items-center">
+                                  <span>Merge Two Sorted Lists</span>
+                                  <span className={`badge ${getDifficultyBadgeClass(problems['merge-two-sorted-lists'].difficulty)} badge-sm`}>
+                                    {problems['merge-two-sorted-lists'].difficulty}
+                                  </span>
                                 </Link>
                               </li>
                           </ul>
