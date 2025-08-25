@@ -46,3 +46,76 @@ body {
             transform: scale(1);
   }
 }
+
+.rainbow-bounce {
+  animation: bounce 4s ease-in-out infinite, rainbow-border 3s linear infinite;
+  border-radius: 15px;
+  padding: 4px;
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  background-size: 400%;
+}
+
+.rainbow-bounce img {
+  border-radius: 12px;
+  display: block;
+}
+
+
+@keyframes rainbow-border {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Code styling */
+.language-csharp {
+  color: #50fa7b !important;
+}
+
+.code-block {
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+  border: 1px solid #30363d;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.code-block pre {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.code-block code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #e6edf3;
+}
+
+/* Syntax highlighting colors */
+.code-block .keyword {
+  color: #ff79c6;
+  font-weight: bold;
+}
+
+.code-block .string {
+  color: #f1fa8c;
+}
+
+.code-block .comment {
+  color: #6272a4;
+  font-style: italic;
+}
+
+.code-block .number {
+  color: #bd93f9;
+}
+
+.code-block .function {
+  color: #50fa7b;
+}

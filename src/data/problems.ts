@@ -154,5 +154,176 @@ public class Solution {
 }`
       }
     ]
-  }
+  },
+  'fizz-buzz': {
+    title: 'Fizz Buzz',
+    difficulty: 'Easy',
+    description: 'Given an integer n, return a string array answer (1-indexed) where: answer[i] == "FizzBuzz" if i is divisible by 3 and 5, answer[i] == "Fizz" if i is divisible by 3, answer[i] == "Buzz" if i is divisible by 5, answer[i] == i (as a string) if none of the above conditions are true.',
+    approach: 'Jeg itererer gennem tallene fra 1 til n og bruger modulo operator (%) til at tjekke delelighed. Først tjekker jeg om tallet er deleligt med både 3 og 5, derefter kun 3, derefter kun 5, og til sidst tilføjer jeg tallet som string hvis ingen af betingelserne er opfyldt.',
+    solutions: [
+      {
+        language: 'C#',
+        code: `public class Solution {
+    public IList<string> FizzBuzz(int n) {
+        List<string> tempList = new List<string>();
+
+        for (int i = 1; i < n+1; i++)
+        {
+            if (i % 3 == 0 && i % 5 == 0)
+            {
+                tempList.Add("FizzBuzz");
+            }
+            else if (i % 3 == 0)
+            {
+                tempList.Add("Fizz");
+            }
+            else if (i % 5 == 0)
+            {
+                tempList.Add("Buzz");
+            }
+            else
+            {
+                tempList.Add(i.ToString());
+            }
+        }
+        return tempList;
+    }
+}`
+      }
+    ]
+  },
+  'letter-combinations-of-a-phone-number': {
+    title: 'Letter Combinations of a Phone Number',
+    difficulty: 'Medium',
+    description: 'Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. Return the answer in any order.',
+    approach: 'Jeg bruger en iterativ tilgang med et dictionary til at mappe cifre til bogstaver (som på en telefon). For hvert ciffer bygger jeg alle mulige kombinationer ved at tage de eksisterende kombinationer og tilføje hvert bogstav fra det nuværende ciffer.',
+    solutions: [
+      {
+        language: 'C#',
+        code: `public class Solution {
+    public IList<string> LetterCombinations(string digits)
+    {
+
+        List<string> tempList = new List<string>
+        {
+            ""
+        };
+
+        if (digits.Length == 0)
+        {
+            return [];
+        }
+        
+        var lookupDict = new Dictionary<char, List<char>>
+        {
+            { '2', new List<char>{'a','b','c'} },
+            { '3', new List<char>{'d','e','f'} },
+            { '4', new List<char>{'g','h','i'} },
+            { '5', new List<char>{'j','k','l'} },
+            { '6', new List<char>{'m','n','o'} },
+            { '7', new List<char>{'p','q','r','s'} },
+            { '8', new List<char>{'t','u','v'} },
+            { '9', new List<char>{'w','x','y','z'} },
+        };
+
+
+        foreach (var digit in digits)
+        {
+            List<string> newList = new List<string>();
+
+            foreach (var existing in tempList)
+            {
+                foreach(var letter in lookupDict[digit])
+                {
+                    newList.Add(existing + letter);
+                }
+            }
+            tempList = newList;
+        }
+        
+        return tempList;
+    }
+}`
+      }
+    ]
+  },
+  'shuffle-an-array': {
+    title: 'Shuffle an Array',
+    difficulty: 'Medium',
+    description: 'Given an integer array nums, design an algorithm to randomly shuffle the array. All permutations of the array should be equally likely as a result of the shuffling.',
+    approach: 'Jeg opretter en klasse med en constructor der gemmer det oprindelige array. Reset metoden returnerer det oprindelige array, og Shuffle metoden bruger LINQ OrderBy med en random generator til at blande elementerne tilfældigt.',
+    solutions: [
+      {
+        language: 'C#',
+        code: `public class Solution {
+    public int[] initialState { get; set; }
+    
+    Random random = new Random();
+
+    public Solution(int[] nums)
+    {
+        initialState = nums;
+    }
+
+    public int[] Reset()
+    {
+
+        return initialState;
+    }
+
+    public int[] Shuffle()
+    {
+
+        int[] shuffled = initialState;
+        shuffled = shuffled.OrderBy(x => random.Next()).ToArray();
+        return shuffled;
+    }
+}`
+      }
+    ]
+  },
+  'valid-anagram': {
+    title: 'Valid Anagram',
+    difficulty: 'Easy',
+    description: 'Given two strings s and t, return true if t is an anagram of s, and false otherwise. An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.',
+    approach: 'Jeg tjekker først om strengene har samme længde. Derefter konverterer jeg begge strenge til char arrays og sorterer dem. Hvis de sorterede arrays er identiske, er strengene anagrammer af hinanden.',
+    solutions: [
+      {
+        language: 'C#',
+        code: `public class Solution {
+    public bool IsAnagram(string s, string t) {
+        if (s.Length != t.Length) return false;
+        
+        char[] charArrayS = s.ToCharArray();
+        char[] charArrayT = t.ToCharArray();
+        
+        Array.Sort(charArrayS);
+        Array.Sort(charArrayT);
+        
+        if (charArrayS.SequenceEqual(charArrayT)) return true;
+        return false;
+    }
+}`
+      }
+    ]
+  },
+  'palindrome-number': {
+    title: 'Palindrome Number',
+    difficulty: 'Easy',
+    description: 'Given an integer x, return true if x is a palindrome, and false otherwise.',
+    approach: 'Jeg konverterer tallet til en string, reverser den og sammenligner med originalen. Hvis de er ens, er tallet et palindrom.',
+    solutions: [
+      {
+        language: 'C#',
+        code: `public class Solution {
+    public bool IsPalindrome(int x) {
+        string temp = x.ToString();
+        char[] arr = temp.ToCharArray();
+        var rev = new string(arr.Reverse().ToArray());
+        return temp == rev;
+    }
+}`
+      }
+    ]
+  },
 }

@@ -17,7 +17,9 @@ export default function Home() {
           <div className="hero min-h-screen relative">
               <div className="hero-content text-center">
                   <div className="max-w-md">
-                      <Image src="/images/happy-dog.jpg" alt="Leetcode Logo" width={500} height={300}/>
+                      <div className="rainbow-bounce">
+                        <Image src="/images/happy-dog.jpg" alt="Leetcode Logo" width={500} height={300}/>
+                      </div>
                       <h1 className="text-5xl font-bold scale-up-center">Leetcode løsninger</h1>
                       <p className="py-6">
                         Dette er et portfolio af mine løsninger til leetcode opgaver.
@@ -51,6 +53,46 @@ export default function Home() {
                                   <span>Merge Two Sorted Lists</span>
                                   <span className={`badge ${getDifficultyBadgeClass(problems['merge-two-sorted-lists'].difficulty)} badge-sm`}>
                                     {problems['merge-two-sorted-lists'].difficulty}
+                                  </span>
+                                </Link>
+                              </li>
+                              <li>
+                                <Link href="/problems/fizz-buzz" className="flex justify-between items-center">
+                                  <span>Fizz Buzz</span>
+                                  <span className={`badge ${getDifficultyBadgeClass(problems['fizz-buzz'].difficulty)} badge-sm`}>
+                                    {problems['fizz-buzz'].difficulty}
+                                  </span>
+                                </Link>
+                              </li>
+                              <li>
+                                <Link href="/problems/letter-combinations-of-a-phone-number" className="flex justify-between items-center">
+                                  <span>Letter Combinations</span>
+                                  <span className={`badge ${getDifficultyBadgeClass(problems['letter-combinations-of-a-phone-number'].difficulty)} badge-sm`}>
+                                    {problems['letter-combinations-of-a-phone-number'].difficulty}
+                                  </span>
+                                </Link>
+                              </li>
+                              <li>
+                                <Link href="/problems/shuffle-an-array" className="flex justify-between items-center">
+                                  <span>Shuffle an Array</span>
+                                  <span className={`badge ${getDifficultyBadgeClass(problems['shuffle-an-array'].difficulty)} badge-sm`}>
+                                    {problems['shuffle-an-array'].difficulty}
+                                  </span>
+                                </Link>
+                              </li>
+                              <li>
+                                <Link href="/problems/valid-anagram" className="flex justify-between items-center">
+                                  <span>Valid Anagram</span>
+                                  <span className={`badge ${getDifficultyBadgeClass(problems['valid-anagram'].difficulty)} badge-sm`}>
+                                    {problems['valid-anagram'].difficulty}
+                                  </span>
+                                </Link>
+                              </li>
+                              <li>
+                                <Link href="/problems/palindrome-number" className="flex justify-between items-center">
+                                  <span>Palindrome Number</span>
+                                  <span className={`badge ${getDifficultyBadgeClass(problems['palindrome-number'].difficulty)} badge-sm`}>
+                                    {problems['palindrome-number'].difficulty}
                                   </span>
                                 </Link>
                               </li>

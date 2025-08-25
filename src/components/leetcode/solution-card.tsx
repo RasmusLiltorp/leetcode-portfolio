@@ -43,8 +43,18 @@ export default function SolutionCard({ solutions }: SolutionCardProps) {
             </ul>
           </div>
         </div>
-        <div className="mockup-code">
-          <pre><code>{currentSolution?.code}</code></pre>
+        <div className="code-block rounded-lg p-4 overflow-x-auto">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex space-x-2">
+              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+            </div>
+            <span className="text-gray-400 text-sm font-mono">{currentSolution?.language}</span>
+          </div>
+          <pre className="overflow-x-auto">
+            <code className="language-csharp">{currentSolution?.code}</code>
+          </pre>
         </div>
       </div>
     </div>
