@@ -96,6 +96,14 @@ export default function Home() {
                                   </span>
                                 </Link>
                               </li>
+                              <li>
+                                <Link href="/problems/group-anagrams" className="flex justify-between items-center">
+                                  <span>Group Anagrams</span>
+                                  <span className={`badge ${getDifficultyBadgeClass(problems['group-anagrams'].difficulty)} badge-sm`}>
+                                    {problems['group-anagrams'].difficulty}
+                                  </span>
+                                </Link>
+                              </li>
                           </ul>
                       </li>
                   </ul>

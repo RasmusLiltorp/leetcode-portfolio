@@ -326,4 +326,47 @@ public class Solution {
       }
     ]
   },
+  'group-anagrams': {
+    title: 'Group Anagrams',
+    difficulty: 'Medium',
+    description: 'Given an array of strings strs, group the anagrams together. You can return the answer in any order.',
+    approach: 'Jeg bruger en Dictionary hvor nøglen er den sorterede version af hver string (alle anagrammer har samme sorterede form). For hver string sorterer jeg karaktererne og bruger det som key til at gruppere anagrammerne sammen.',
+    solutions: [
+      {
+        language: 'C#',
+        code: `public class Solution {
+    public IList<IList<string>> GroupAnagrams(string[] strs)
+    {
+        var dict = new Dictionary<string, List<string>>();
+        IList<IList<string>> result = new List<IList<string>>();
+
+        foreach (string str in strs)
+        {
+            char[] arr = str.ToCharArray();
+            Array.Sort(arr);
+            string key = new string(arr);
+
+            
+            if (dict.ContainsKey(key))
+            {
+                dict[key].Add(str);
+            }
+            else
+            {
+                dict.Add(key, new List<string> {str});
+            }
+        }
+
+        foreach (var kvp in dict.Values)
+        {
+            result.Add(kvp);
+        }
+        
+        
+        return result;
+    }
+}`
+      }
+    ]
+  },
 }
